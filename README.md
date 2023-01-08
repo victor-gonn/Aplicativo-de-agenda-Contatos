@@ -1,17 +1,7 @@
 # contact_list
 
-A new Flutter project.
+Aplicativo de agenda de contatos para Android baseado em SqLite e desenvolvido em Flutter
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# Aplicativo-de-agenda-Contatos
+## Funcionalidades
+ - Armazena informações de email e número de telefone
+ - Pode usar uma imagem para identificar o contato caso o úsuario queira
