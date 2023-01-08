@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          
           title: Text("Contato"),
           centerTitle: true,
           actions: [
@@ -57,10 +58,12 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         floatingActionButton: FloatingActionButton(
+          
           onPressed: () {
             _contactRoute();
           },
           child: Icon(Icons.add),
+          
         ),
         body: ListView.builder(
             padding: EdgeInsets.all(15),
