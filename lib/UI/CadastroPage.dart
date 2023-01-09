@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -100,7 +101,9 @@ class _ContactPageState extends State<ContactPage> {
                 ),
                 TextField(
                   controller: _phoneController,
-                  decoration: InputDecoration(labelText: "Número"),
+                  decoration: InputDecoration(
+                    labelText: "Número",
+                  ),
                   keyboardType: TextInputType.phone,
                   onChanged: ((text) {
                     _userEdited = true;
@@ -114,21 +117,19 @@ class _ContactPageState extends State<ContactPage> {
         ));
   }
 
-  _getFromGallery() async{
-    XFile? file = (await ImagePicker().pickImage(
-      source: ImageSource.gallery)) ;
-      if(file == null) {
-        return null;
-      } else {
-        setState(() {
-          _editedContact.img = file.path;
-        } 
-        );
-      }
+  _getFromGallery() async {
+    XFile? file = (await ImagePicker().pickImage(source: ImageSource.gallery));
+    if (file == null) {
+      return null;
+    } else {
+      setState(() {
+        _editedContact.img = file.path;
+      });
+    }
   }
 
   Future<bool> _requestPop() {
-    if (_userEdited  ) {
+    if (_userEdited) {
       showDialog(
           context: context,
           builder: ((context) {
@@ -151,9 +152,7 @@ class _ContactPageState extends State<ContactPage> {
                 )
               ],
             );
-          }
-        )
-      );
+          }));
       return Future.value(false);
     } else {
       return Future.value(true);
