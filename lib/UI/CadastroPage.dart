@@ -81,7 +81,8 @@ class _ContactPageState extends State<ContactPage> {
                 TextField(
                   controller: _nameController,
                   focusNode: _nameFocus,
-                  decoration: InputDecoration(labelText: "Nome"),
+                  decoration: InputDecoration(labelText: "Nome", 
+                  labelStyle: TextStyle(fontFamily: 'Bungee', color: Colors.white)),
                   onChanged: ((text) {
                     _userEdited = true;
                     setState(() {
@@ -91,7 +92,8 @@ class _ContactPageState extends State<ContactPage> {
                 ),
                 TextField(
                   controller: _emailController,
-                  decoration: InputDecoration(labelText: "Email"),
+                  decoration: InputDecoration(labelText: "Email", 
+                  labelStyle: TextStyle(fontFamily: 'Bungee', color: Colors.white)),
                   keyboardType: TextInputType.emailAddress,
                   onChanged: ((text) {
                     _userEdited = true;
@@ -102,7 +104,7 @@ class _ContactPageState extends State<ContactPage> {
                 TextField(
                   controller: _phoneController,
                   decoration: InputDecoration(
-                    labelText: "Número",
+                    labelText: "Número", labelStyle: TextStyle(fontFamily: 'Bungee', color: Colors.white), 
                   ),
                   keyboardType: TextInputType.phone,
                   onChanged: ((text) {

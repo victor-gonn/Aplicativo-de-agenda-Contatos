@@ -13,19 +13,33 @@ void main() {
     theme: ThemeData(
         textTheme: TextTheme(
           headline1: TextStyle(
-              fontSize: 21, fontWeight: FontWeight.w500, color: Colors.white),
+              fontSize: 21,  color: Colors.white, fontFamily: 'Bungee'
+              ),
           headline2: TextStyle(
-              fontSize: 17, fontWeight: FontWeight.w400, color: Colors.white),
+              fontSize: 17,   color: Colors.white, 
+              fontFamily: 'Bungee'
+              ),
+          headline3: TextStyle(
+            fontFamily: 'Bungee', fontSize: 18
+            )
         ),
         inputDecorationTheme: InputDecorationTheme(
           labelStyle: TextStyle(color: Colors.white),
         ),
         bottomSheetTheme: BottomSheetThemeData(backgroundColor: Color.fromARGB(255, 47, 46, 51)),
+        //
         primaryColor: Color.fromARGB(202, 106, 139, 167),
+        //
         scaffoldBackgroundColor: Color.fromARGB(255, 47, 46, 51),
-        appBarTheme: AppBarTheme(color: Color.fromARGB(255, 255, 81, 81)),
+        //
+        appBarTheme: AppBarTheme(color: Color.fromARGB(255, 255, 81, 81),
+         titleTextStyle: TextStyle(fontFamily: 'Bungee', fontSize: 18) ),
+        //
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-            backgroundColor: Color.fromARGB(255, 255, 81, 81)),
-        cardTheme: CardTheme(color: Color.fromARGB(206, 93, 96, 105))),
+            backgroundColor: Color.fromARGB(255, 255, 81, 81)
+            ),
+        cardTheme: CardTheme(color: Color.fromARGB(206, 93, 96, 105)
+        )
+        ),
   ));
 }

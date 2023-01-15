@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Contato"),
+          title: Text("Contato", ),
           centerTitle: true,
           actions: [
             PopupMenuButton<OrderOptions>(
@@ -146,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                             },
                             child: Text(
                               "Ligar",
-                              style: TextStyle(fontSize: 18),
+                              style: Theme.of(context).textTheme.headline2,
                             )),
                       ),
                       Padding(
@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                               _contactRoute(contact: contacts[index]);
                             },
                             child:
-                                Text("Editar", style: TextStyle(fontSize: 18))),
+                                Text("Editar", style: Theme.of(context).textTheme.headline2)),
                       ),
                       Padding(
                         padding: EdgeInsets.all(10),
@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                               });
                             },
                             child: Text("Deletar",
-                                style: TextStyle(fontSize: 18))),
+                                style: Theme.of(context).textTheme.headline2)),
                       ),
                     ],
                   ),
