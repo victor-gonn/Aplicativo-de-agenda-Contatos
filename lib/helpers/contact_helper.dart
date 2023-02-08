@@ -1,5 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:equatable/equatable.dart';
 
 final String contactTable = "contactTable";
 final String idColumn = "idColumn";
@@ -15,12 +16,9 @@ class ContactHelper {
 
   ContactHelper.internal();
 
-   Database? _db;
+  Database? _db;
 
-  Future<Database> get db async =>
-  _db ??= await initDb();
-  
-  
+  Future<Database> get db async => _db ??= await initDb();
 
   Future<Database> initDb() async {
     final databasesPath = await getDatabasesPath();
@@ -81,7 +79,7 @@ class ContactHelper {
     return listMap.map((e) => Contact.fromMap(e)).toList();
   }
 
-  Future closeDb() async{
+  Future closeDb() async {
     Database dbContact = await db;
     dbContact.close();
   }
@@ -93,7 +91,7 @@ class Contact {
   String? email;
   String? phone;
   String? img;
-   Contact();
+  Contact();
 
   Contact.fromMap(Map map) {
     id = map[idColumn];
@@ -120,4 +118,13 @@ class Contact {
   String toString() {
     return 'Contact(id: $id, name: $name, email: $email, phone: $phone, img: $img)';
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        email,
+        phone,
+        img,
+      ];
 }
