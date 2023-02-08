@@ -1,13 +1,34 @@
 import 'dart:ui';
 
 import 'package:contact_list/UI/CadastroPage.dart';
+import 'package:contact_list/blocs/bloc/contacts_bloc.dart';
+import 'package:contact_list/helpers/contact_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'UI/HomePage.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const Myapp());
+}
+
+class Myapp extends StatelessWidget {
+  const Myapp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ContactsBloc()..add(LoadContacts(
+           contacts: <Contact>[]
+            
+          )),
+        ),
+        
+      ],
+      child: MaterialApp(
     debugShowCheckedModeBanner: false,
     home: HomePage(),
     theme: ThemeData(
@@ -41,5 +62,7 @@ void main() {
         cardTheme: CardTheme(color: Color.fromARGB(206, 93, 96, 105)
         )
         ),
-  ));
+  ),
+    );
+  }
 }
