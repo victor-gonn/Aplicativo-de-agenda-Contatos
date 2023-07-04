@@ -9,6 +9,14 @@ abstract class ContactsState extends Equatable {
   List<Object> get props => [];
 }
 
+class ContactInit extends ContactsState {
+  const ContactInit();
+
+  @override
+  List<Object> get props => [];
+
+}
+
 class ContactsLoading extends ContactsState {
   
 }

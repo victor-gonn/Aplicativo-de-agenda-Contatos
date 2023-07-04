@@ -1,6 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:equatable/equatable.dart';
+import 'package:get_it/get_it.dart';
 
 final String contactTable = "contactTable";
 final String idColumn = "idColumn";
@@ -9,7 +10,16 @@ final String emailColumn = "emailColumn";
 final String phoneColumn = "phoneColumn";
 final String imgColumn = "imgColumn";
 
+
+
+
+
 class ContactHelper {
+
+  /*List<Contact> contact = [];
+
+  ContactHelper();*/
+
   static final ContactHelper _instance = ContactHelper.internal();
 
   factory ContactHelper() => _instance;

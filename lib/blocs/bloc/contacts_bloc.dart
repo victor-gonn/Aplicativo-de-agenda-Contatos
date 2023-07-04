@@ -15,6 +15,8 @@ class ContactsBloc extends Bloc<ContactsEvent, ContactsState> {
     on<DeleteContacts>(_onDeleteContacts);
   }
 
+  //var repository = locator.get<ContactHelper>();
+
   void _onLoadContacts(LoadContacts event, Emitter<ContactsState> emit) {
     emit(
       ContactsLoaded(contacts: event.contacts),

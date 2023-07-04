@@ -5,7 +5,6 @@ import 'package:contact_list/blocs/bloc/contacts_bloc.dart';
 import 'package:contact_list/helpers/contact_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 enum OrderOptions { orderAz, orderZa }
@@ -25,7 +24,6 @@ class _HomePageState extends State<HomePage> {
     helper.getAllContacts().then((list) {
       setState(() {
         contacts = list as List<Contact>;
-        
       });
     });
   }
@@ -41,9 +39,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
-            "Contato",
-          ),
+          title: Text("Contato", ),
           centerTitle: true,
           actions: [
             PopupMenuButton<OrderOptions>(
@@ -67,26 +63,12 @@ class _HomePageState extends State<HomePage> {
           },
           child: Icon(Icons.add),
         ),
-        body: BlocBuilder<ContactsBloc, ContactsState>(
-          builder: (context, state) {
-            if (state is ContactsLoading) {
-              return const CircularProgressIndicator();
-            }
-            if ( state is ContactsLoaded) {
-              return ListView.builder(
-                padding: EdgeInsets.all(15),
-                itemCount: state.contacts.length,
-                itemBuilder: (context, index) {
-                  return _contactCard(context, index);
-                });
-            }
-            else {
-              return Text("deu erro");
-            }
-            
-          },
-        )
-        );
+        body: ListView.builder(
+            padding: EdgeInsets.all(15),
+            itemCount: contacts.length,
+            itemBuilder: (context, index) {
+              return _contactCard(context, index);
+            }));
   }
 
   Widget _contactCard(BuildContext context, int index) {
@@ -175,8 +157,8 @@ class _HomePageState extends State<HomePage> {
                               Navigator.pop(context);
                               _contactRoute(contact: contacts[index]);
                             },
-                            child: Text("Editar",
-                                style: Theme.of(context).textTheme.headline2)),
+                            child:
+                                Text("Editar", style: Theme.of(context).textTheme.headline2)),
                       ),
                       Padding(
                         padding: EdgeInsets.all(10),
