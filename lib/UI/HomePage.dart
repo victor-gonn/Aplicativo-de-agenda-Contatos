@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:contact_list/UI/CadastroPage.dart';
-import 'package:contact_list/blocs/bloc/contacts_bloc.dart';
+import 'package:contact_list/cubit/contacts_cubit_cubit.dart';
+
 import 'package:contact_list/helpers/contact_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,30 +10,34 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 enum OrderOptions { orderAz, orderZa }
 
+
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
+
+  
 }
 
 class _HomePageState extends State<HomePage> {
   ContactHelper helper = ContactHelper();
   List<Contact> contacts = [];
 
-  _getAllContacts() {
+  /*_getAllContacts() {
     helper.getAllContacts().then((list) {
       setState(() {
         contacts = list as List<Contact>;
       });
     });
-  }
+  }*/
 
   @override
   void initState() {
     super.initState();
 
-    _getAllContacts();
+    //_getAllContacts();
   }
 
   @override
@@ -57,19 +62,29 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         ),
+        
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             _contactRoute();
           },
           child: Icon(Icons.add),
         ),
-        body: ListView.builder(
+        body: BlocProvider.value(
+      value: BlocProvider.of<ContactsCubitCubit>(context)..getContacts(),
+      child:
+         ListView.builder(
             padding: EdgeInsets.all(15),
             itemCount: contacts.length,
             itemBuilder: (context, index) {
               return _contactCard(context, index);
-            }));
+            }
+            ),
+            
+      ), 
+      );
   }
+
+  
 
   Widget _contactCard(BuildContext context, int index) {
     return GestureDetector(
@@ -117,11 +132,11 @@ class _HomePageState extends State<HomePage> {
     if (recContact != null) {
       if (contact != null) {
         await helper.updateContact(recContact);
-        _getAllContacts();
+        context.read<ContactsCubitCubit>().getContacts();
       } else {
         await helper.saveContact(recContact);
       }
-      _getAllContacts();
+      context.read<ContactsCubitCubit>().getContacts();
     }
   }
 
