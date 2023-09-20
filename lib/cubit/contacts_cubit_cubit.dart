@@ -21,4 +21,8 @@ Future<void> getContacts() async {
   }
 }
 
+Future<void> excluirContato(id) async {
+  
+}
+
 }

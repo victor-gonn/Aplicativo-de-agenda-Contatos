@@ -25,19 +25,20 @@ class _HomePageState extends State<HomePage> {
   ContactHelper helper = ContactHelper();
   List<Contact> contacts = [];
 
-  /*_getAllContacts() {
+  _getAllContacts() {
     helper.getAllContacts().then((list) {
       setState(() {
         contacts = list as List<Contact>;
       });
     });
-  }*/
+  }
 
   @override
   void initState() {
     super.initState();
+    
 
-    //_getAllContacts();
+    _getAllContacts();
   }
 
   @override
@@ -132,11 +133,11 @@ class _HomePageState extends State<HomePage> {
     if (recContact != null) {
       if (contact != null) {
         await helper.updateContact(recContact);
-        context.read<ContactsCubitCubit>().getContacts();
+        _getAllContacts();
       } else {
         await helper.saveContact(recContact);
       }
-      context.read<ContactsCubitCubit>().getContacts();
+      _getAllContacts();
     }
   }
 
